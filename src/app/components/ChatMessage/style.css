@@ -1,0 +1,12 @@
+.chatMessage {
+	border: 1px solid #ccc;
+	margin: 10px;
+	padding: 10px;
+	border-radius: 6px;
+	max-width: 200px;
+}
+
+.self {
+	align-self: flex-end;
+	background: #bef9fb;
+}
