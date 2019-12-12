@@ -5,13 +5,34 @@ import { ChatMessage } from "../ChatMessage";
 
 export type ChatMessageListProps = { messages: ChatMessageData[] };
 
-export function ChatMessageList(props: ChatMessageListProps) {
-	const { messages } = props;
-	return (
-		<div className={style.chatMessageList}>
-			{messages.map((m, i) => (
-				<ChatMessage data={m} key={`${i}-${m.user.name}`} />
-			))}
-		</div>
-	);
+export class ChatMessageList extends React.Component<ChatMessageListProps> {
+	myRef: React.RefObject<HTMLDivElement> = React.createRef();
+
+	constructor(props: ChatMessageListProps) {
+		super(props);
+		const r: any = React.createRef();
+		this.myRef = r;
+	}
+
+	componentDidUpdate() {
+		this.scrollToBottom();
+	}
+
+	scrollToBottom() {
+		const el = this.myRef.current;
+		if (el !== null) {
+			el.scrollTop = el.scrollHeight;
+		}
+	}
+
+	render() {
+		const { messages } = this.props;
+		return (
+			<div className={style.chatMessageList} ref={this.myRef}>
+				{messages.map((m, i) => (
+					<ChatMessage data={m} key={`${i}-${m.user.name}`} />
+				))}
+			</div>
+		);
+	}
 }

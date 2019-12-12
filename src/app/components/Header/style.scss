@@ -1,0 +1,16 @@
+@import "~bootstrap/scss/bootstrap";
+
+.nav {
+	ul {
+		@extend .nav;
+		li {
+			@extend .nav-item;
+			a {
+				@extend .nav-link;
+			}
+			a:active {
+				border-bottom: 2px solid #ccc;
+			}
+		}
+	}
+}

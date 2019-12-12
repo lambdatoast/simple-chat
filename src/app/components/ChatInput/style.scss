@@ -1,22 +1,14 @@
-$input-height: 2em;
+@import "~bootstrap/scss/bootstrap";
 
 .chatInput {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 10px;
-}
-
-.chatInput input {
-	flex: 12;
-	height: $input-height;
-}
-
-.chatInputSendBtn {
-	flex: 1;
-	height: $input-height;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 1px solid #ccc;
+	@extend .input-group;
+	textarea {
+		@extend .form-control;
+	}
+	.chatInputSendBtn {
+		@extend .input-group-append;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 }

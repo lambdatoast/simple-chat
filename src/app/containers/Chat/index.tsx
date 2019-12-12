@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as style from "./style.scss";
 import { connect } from "react-redux";
 import { ChatMessageData } from "app/models";
 import { ChatMessageList } from "app/components/ChatMessageList";
@@ -12,11 +13,10 @@ interface ChatProps {
 }
 
 class ChatComponent extends React.Component<ChatProps> {
-	state = { inputText: "" };
 	render() {
 		const { messages, appendMessage } = this.props;
 		return (
-			<div>
+			<div className={style.chatContainer}>
 				<ChatMessageList messages={messages} />
 				<ChatInput appendMessage={appendMessage} />
 			</div>

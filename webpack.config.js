@@ -47,6 +47,7 @@ const rules = [
 				options: {
 					ident: "postcss",
 					plugins: [
+						require("autoprefixer"),
 						require("postcss-import")({ addDependencyTo: webpack }),
 						require("postcss-url")(),
 						require("postcss-preset-env")({

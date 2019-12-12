@@ -12,7 +12,8 @@ export class ChatInput extends React.Component<ChatInputProps> {
 		const { appendMessage } = this.props;
 		return (
 			<div className={style.chatInput}>
-				<input
+				<textarea
+					aria-label="Enter message"
 					value={this.state.inputText}
 					placeholder="Enter message"
 					onChange={e => {
