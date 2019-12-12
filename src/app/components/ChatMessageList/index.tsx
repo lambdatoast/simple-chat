@@ -9,8 +9,8 @@ export function ChatMessageList(props: ChatMessageListProps) {
 	const { messages } = props;
 	return (
 		<div className={style.chatMessageList}>
-			{messages.map(m => (
-				<ChatMessage data={m} />
+			{messages.map((m, i) => (
+				<ChatMessage data={m} key={`${i}-${m.user.name}`} />
 			))}
 		</div>
 	);
