@@ -5,3 +5,5 @@ export type ChatMessageData = {
 	time: string;
 	user: User;
 };
+
+export * from "./Settings";
