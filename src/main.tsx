@@ -5,27 +5,18 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 // import { App } from './app';
 import { createStore } from "redux";
-import { ChatMessageData } from "app/models";
 import { Chat } from "app/containers";
 import { Settings } from "app/containers/Settings";
 import { Header } from "app/components/Header";
+import { appReducer } from "app/reducers";
 
 // prepare store
-const store = createStore(() => {}); //configureStore();
+const store = createStore(appReducer); //configureStore();
 
-const messages: ChatMessageData[] = [
-	{ text: "Want to bang tonight?", time: "10:02", user: { name: "guest0001" } },
-	{ text: "I meant hang", time: "10:02", user: { name: "guest0001" } },
-	{ text: "Duck, auto-cucumber", time: "10:02", user: { name: "guest0001" } },
-	{ text: "What?", time: "10:08", user: { name: "me" } },
-	{ text: "God donut", time: "10:09", user: { name: "guest0001" } },
-	{
-		text: "How the duck do I turn this off",
-		time: "10:09",
-		user: { name: "guest0001" }
-	},
-	{ text: ":))))", time: "10:09", user: { name: "me" } }
-];
+// Log the initial state
+console.log(store.getState());
+
+store.subscribe(() => console.log(store.getState()));
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -37,7 +28,7 @@ ReactDOM.render(
 						<Settings />
 					</Route>
 					<Route path="/">
-						<Chat messages={messages} />
+						<Chat />
 					</Route>
 				</Switch>
 			</div>
