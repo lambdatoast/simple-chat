@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as style from "./style.css";
+import * as style from "./style.scss";
 import { ChatMessageData } from "app/models";
 import { ChatMessage } from "../ChatMessage";
 
