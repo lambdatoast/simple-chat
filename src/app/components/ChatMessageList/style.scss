@@ -1,0 +1,9 @@
+$chat-message-list-height: 200px;
+
+.chatMessageList {
+	display: flex;
+	flex-direction: column;
+	max-height: $chat-message-list-height;
+	border: 1px solid #ccc;
+	overflow: auto;
+}

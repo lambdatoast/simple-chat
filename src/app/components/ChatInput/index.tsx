@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as style from "./style.scss";
 import { ChatMessageData } from "app/models";
 
 interface ChatInputProps {
@@ -10,7 +11,7 @@ export class ChatInput extends React.Component<ChatInputProps> {
 	render() {
 		const { appendMessage } = this.props;
 		return (
-			<div>
+			<div className={style.chatInput}>
 				<input
 					value={this.state.inputText}
 					placeholder="Enter message"
@@ -18,7 +19,8 @@ export class ChatInput extends React.Component<ChatInputProps> {
 						this.setState({ inputText: e.target.value });
 					}}
 				/>
-				<button
+				<div
+					className={style.chatInputSendBtn}
 					onClick={() => {
 						appendMessage({
 							text: this.state.inputText,
@@ -29,7 +31,7 @@ export class ChatInput extends React.Component<ChatInputProps> {
 					}}
 				>
 					Send
-				</button>
+				</div>
 			</div>
 		);
 	}
