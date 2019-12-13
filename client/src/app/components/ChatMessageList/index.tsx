@@ -1,9 +1,12 @@
 import * as React from "react";
 import * as style from "./style.scss";
-import { ChatMessageData } from "app/models";
+import { ChatMessageData, SettingsData } from "app/models";
 import { ChatMessage } from "../ChatMessage";
 
-export type ChatMessageListProps = { messages: ChatMessageData[] };
+export type ChatMessageListProps = {
+	settings: SettingsData;
+	messages: ChatMessageData[];
+};
 
 export class ChatMessageList extends React.Component<ChatMessageListProps> {
 	myRef: React.RefObject<HTMLDivElement> = React.createRef();
@@ -26,11 +29,15 @@ export class ChatMessageList extends React.Component<ChatMessageListProps> {
 	}
 
 	render() {
-		const { messages } = this.props;
+		const { messages, settings } = this.props;
 		return (
 			<div className={style.chatMessageList} ref={this.myRef}>
 				{messages.map((m, i) => (
-					<ChatMessage data={m} key={`${i}-${m.user.name}`} />
+					<ChatMessage
+						isSelf={m.user.name === settings.userName}
+						data={m}
+						key={`${i}-${m.user.name}`}
+					/>
 				))}
 			</div>
 		);
