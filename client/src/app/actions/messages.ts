@@ -6,3 +6,10 @@ export function appendMessage(message: ChatMessageData) {
 		message
 	} as const;
 }
+
+export function sendMessage(message: ChatMessageData) {
+	return {
+		type: "SEND_MESSAGE",
+		message
+	} as const;
+}

@@ -3,13 +3,13 @@ import * as style from "./style.scss";
 import { ChatMessageData } from "app/models";
 
 interface ChatInputProps {
-	appendMessage: (message: ChatMessageData) => void;
+	sendMessage: (message: ChatMessageData) => void;
 }
 
 export class ChatInput extends React.Component<ChatInputProps> {
 	state = { inputText: "" };
 	render() {
-		const { appendMessage } = this.props;
+		const { sendMessage } = this.props;
 		return (
 			<div className={style.chatInput}>
 				<textarea
@@ -23,7 +23,7 @@ export class ChatInput extends React.Component<ChatInputProps> {
 				<div
 					className={style.chatInputSendBtn}
 					onClick={() => {
-						appendMessage({
+						sendMessage({
 							text: this.state.inputText,
 							time: "10:10",
 							user: { name: "me" }

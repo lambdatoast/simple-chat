@@ -1,26 +1,30 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import thunkMiddleware from "redux-thunk";
 import * as io from "socket.io-client";
 import "bootstrap";
-
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Chat } from "app/containers";
 import { Settings } from "app/containers/Settings";
 import { Header } from "app/components/Header";
 import { appReducer } from "app/reducers";
+import { ChatMessageData } from "app/models";
+import { appendMessage } from "app/actions";
+import { socketMiddleware } from "app/middleware/socket";
 
-const x: SocketIOClient.Socket = io("localhost:5001");
-
-x.emit("message", { message: "yo bruh do you even message?!" });
-
-x.on("message", (x: any) => {
-	console.log("received message", x);
-});
+const socket: SocketIOClient.Socket = io("localhost:5001");
 
 // prepare store
-const store = createStore(appReducer);
+const store = createStore(
+	appReducer,
+	applyMiddleware(thunkMiddleware, socketMiddleware(socket))
+);
+
+socket.on("message", (m: ChatMessageData) => {
+	store.dispatch(appendMessage(m));
+});
 
 // Log the initial state
 console.log(store.getState());
