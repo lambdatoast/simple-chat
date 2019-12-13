@@ -11,6 +11,7 @@ import { appReducer } from "app/reducers";
 import { ChatMessageData } from "app/models";
 import { appendMessage } from "app/actions";
 import { socketMiddleware } from "app/middleware/socket";
+import * as style from "./style.scss";
 
 const socket: SocketIOClient.Socket = io("localhost:5001");
 
@@ -32,7 +33,7 @@ store.subscribe(() => console.log(store.getState()));
 ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
-			<div>
+			<div className={style.page}>
 				<Header />
 				<Switch>
 					<Route path="/settings">
