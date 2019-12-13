@@ -9,20 +9,30 @@ import { createStore, applyMiddleware } from "redux";
 import { Chat, Settings, Header } from "app/containers";
 import { appReducer } from "app/reducers";
 import { ChatMessageData } from "app/models";
-import { appendMessage } from "app/actions";
+import { appendMessage, setUserName } from "app/actions";
 import { socketMiddleware } from "app/middleware/socket";
 import * as style from "./style.scss";
+import { settingsStorage } from "app/middleware/settingsStorage";
 
 const socket: SocketIOClient.Socket = io("localhost:5001");
+
+const settings = localStorage.getItem("settings");
 
 // prepare store
 const store = createStore(
 	appReducer,
-	applyMiddleware(thunkMiddleware, socketMiddleware(socket))
+	settings ? { settings: JSON.parse(settings) } : {},
+	applyMiddleware(thunkMiddleware, socketMiddleware(socket), settingsStorage)
 );
 
 socket.on("message", (m: ChatMessageData) => {
 	store.dispatch(appendMessage(m));
+});
+
+socket.on("guestUserName", (userName: string) => {
+	if (settings === null) {
+		store.dispatch(setUserName(userName));
+	}
 });
 
 // Log the initial state
