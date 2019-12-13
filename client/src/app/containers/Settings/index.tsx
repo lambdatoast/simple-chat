@@ -11,7 +11,7 @@ interface SettingsProps {
 	setInterfaceColor: (value: InterfaceColor) => void;
 }
 
-export function SettingsComponent(props: SettingsProps) {
+function SettingsComponent(props: SettingsProps) {
 	return (
 		<SettingsForm
 			data={props.settings}

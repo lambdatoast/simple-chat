@@ -7,9 +7,16 @@
 			@extend .nav-item;
 			a {
 				@extend .nav-link;
+				position: relative;
 			}
 			a:active {
 				border-bottom: 2px solid #ccc;
+			}
+			.unreadCount {
+				@extend .badge, .badge-pill, .badge-success;
+				position: absolute;
+				top: 0px;
+				right: -10px;
 			}
 		}
 	}
