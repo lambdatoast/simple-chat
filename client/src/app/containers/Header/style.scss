@@ -1,6 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 .nav {
+	flex: 1;
 	ul {
 		@extend .nav;
 		li {

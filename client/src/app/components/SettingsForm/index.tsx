@@ -20,13 +20,16 @@ export function SettingsForm(props: SettingsFormProps) {
 
 	return (
 		<form className={style.settingsForm}>
+			<label htmlFor="userName">User name</label>
 			<input
+				name="userName"
 				type="text"
 				value={userName}
 				onChange={onChange(props.setters.setUserName)}
 			/>
+			<label>Interface Color</label>
 			<div className={style.interfaceColor}>
-				<div className="form-check">
+				<div className={style.formCheck}>
 					<input
 						className="form-check-input"
 						type="radio"
@@ -40,7 +43,7 @@ export function SettingsForm(props: SettingsFormProps) {
 						Light
 					</label>
 				</div>
-				<div className="form-check">
+				<div className={style.formCheck}>
 					<input
 						className="form-check-input"
 						type="radio"

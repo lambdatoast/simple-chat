@@ -1,7 +1,15 @@
 @import "~bootstrap/scss/bootstrap";
 
 .settingsForm {
+	flex: 11;
+	padding: 15px;
 	input {
 		@extend .form-control;
+	}
+	.interfaceColor {
+		@extend .input-group;
+		.formCheck {
+			flex: 1;
+		}
 	}
 }
