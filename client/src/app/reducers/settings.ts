@@ -18,6 +18,8 @@ export function settingsReducer(
 			return { ...state, userName: action.value };
 		case "SETTINGS/SET_INTERFACE_COLOR":
 			return { ...state, interfaceColor: action.value };
+		case "SETTINGS/SET_CTRL_ENTER":
+			return { ...state, ctrlEnter: action.value };
 		default:
 			return state;
 	}

@@ -9,8 +9,16 @@ interface ChatInputProps {
 
 export class ChatInput extends React.Component<ChatInputProps> {
 	state = { inputText: "" };
+	sendMessage = () => {
+		this.props.sendMessage({
+			text: this.state.inputText,
+			time: "10:10",
+			user: { name: this.props.settings.userName }
+		});
+		this.setState({ inputText: "" });
+	};
 	render() {
-		const { sendMessage, settings } = this.props;
+		const { settings } = this.props;
 		return (
 			<div className={style.chatInput}>
 				<textarea
@@ -20,16 +28,17 @@ export class ChatInput extends React.Component<ChatInputProps> {
 					onChange={e => {
 						this.setState({ inputText: e.target.value });
 					}}
+					onKeyPress={e => {
+						const isCtrlEnter = e.key === "Enter" && e.ctrlKey;
+						if (isCtrlEnter && settings.ctrlEnter === "on") {
+							this.sendMessage();
+						}
+					}}
 				/>
 				<div
 					className={style.chatInputSendBtn}
 					onClick={() => {
-						sendMessage({
-							text: this.state.inputText,
-							time: "10:10",
-							user: { name: settings.userName }
-						});
-						this.setState({ inputText: "" });
+						this.sendMessage();
 					}}
 				>
 					Send

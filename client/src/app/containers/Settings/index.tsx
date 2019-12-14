@@ -1,14 +1,15 @@
 import * as React from "react";
 import { SettingsForm } from "app/components";
-import { SettingsData, UserName, InterfaceColor } from "app/models";
+import { SettingsData, UserName, InterfaceColor, CtrlEnter } from "app/models";
 import { AppState } from "app/reducers";
-import { setUserName, setInterfaceColor } from "app/actions";
+import { setUserName, setInterfaceColor, setCtrlEnter } from "app/actions";
 import { connect } from "react-redux";
 
 interface SettingsProps {
 	settings: SettingsData;
 	setUserName: (value: UserName) => void;
 	setInterfaceColor: (value: InterfaceColor) => void;
+	setCtrlEnter: (value: CtrlEnter) => void;
 }
 
 function SettingsComponent(props: SettingsProps) {
@@ -17,7 +18,8 @@ function SettingsComponent(props: SettingsProps) {
 			data={props.settings}
 			setters={{
 				setUserName: props.setUserName,
-				setInterfaceColor: props.setInterfaceColor
+				setInterfaceColor: props.setInterfaceColor,
+				setCtrlEnter: props.setCtrlEnter
 			}}
 		/>
 	);
@@ -31,7 +33,8 @@ function mapStateToProps(state: AppState) {
 
 const mapDispatchToProps = {
 	setUserName,
-	setInterfaceColor
+	setInterfaceColor,
+	setCtrlEnter
 };
 
 export const Settings = connect(
