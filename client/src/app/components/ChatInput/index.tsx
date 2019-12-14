@@ -12,7 +12,7 @@ export class ChatInput extends React.Component<ChatInputProps> {
 	sendMessage = () => {
 		this.props.sendMessage({
 			text: this.state.inputText,
-			time: "10:10",
+			time: +new Date(),
 			user: { name: this.props.settings.userName }
 		});
 		this.setState({ inputText: "" });

@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as classNames from "classnames";
+import * as moment from "moment";
 import * as style from "./style.scss";
 import { ChatMessageData } from "app/models";
 
@@ -25,9 +26,10 @@ export function ChatMessage(props: { data: ChatMessageData; isSelf: boolean }) {
 	});
 	return (
 		<div className={classes}>
-			{!isSelf ? (
-				<header className={style.userName}>{data.user.name}</header>
-			) : null}
+			<div className={style.userName}>
+				{!isSelf ? <span>{data.user.name}, </span> : null}
+				<span>{moment(data.time).format("h:mm")}</span>
+			</div>
 			<span>{data.text}</span>
 			{findYouTubeLink(data.text).fold(
 				() => null,

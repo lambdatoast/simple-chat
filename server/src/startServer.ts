@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as socketIo from "socket.io";
 import { createServer, Server } from "http";
+import * as moment from "moment";
 import { ChatMessageData } from "./models/ChatMessage";
 import { ChatServerState } from "./models/ChatServerState";
 var cors = require("cors");
@@ -34,7 +35,10 @@ export function startServer() {
 
 		socket.on("message", (m: ChatMessageData) => {
 			console.log("[simple-chat-server](message): %s", JSON.stringify(m));
-			io.emit("message", m);
+			io.emit("message", {
+				...m,
+				time: +moment.utc()
+			});
 		});
 
 		socket.on("disconnect", () => {

@@ -2,8 +2,10 @@ interface User {
 	name: string;
 }
 
+type UnixEpochTimestamp = number;
+
 export type ChatMessageData = {
 	text: string;
-	time: string;
+	time: UnixEpochTimestamp;
 	user: User;
 };
