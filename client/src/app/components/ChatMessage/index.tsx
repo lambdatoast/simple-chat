@@ -36,8 +36,8 @@ export function ChatMessage(props: { data: ChatMessageData; isSelf: boolean }) {
 				([url, videoID]) => (
 					<div>
 						<iframe
-							width="560"
-							height="315"
+							width="100%"
+							height="100%"
 							src={`https://www.youtube.com/embed/${videoID}`}
 							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 						/>

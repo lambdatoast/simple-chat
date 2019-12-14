@@ -1,9 +1,8 @@
 import * as express from "express";
 import * as socketIo from "socket.io";
 import { createServer, Server } from "http";
-import * as moment from "moment";
-import { ChatMessageData } from "./models/ChatMessage";
 import { ChatServerState } from "./models/ChatServerState";
+import { onMessage } from "./eventHandlers";
 var cors = require("cors");
 
 function createExpressApp(): express.Application {
@@ -33,13 +32,7 @@ export function startServer() {
 		io.emit("guestUserName", `guest-${state.nextUID}`);
 		state.nextUID++;
 
-		socket.on("message", (m: ChatMessageData) => {
-			console.log("[simple-chat-server](message): %s", JSON.stringify(m));
-			io.emit("message", {
-				...m,
-				time: +moment.utc()
-			});
-		});
+		socket.on("message", onMessage(io));
 
 		socket.on("disconnect", () => {
 			console.log("Client disconnected");
