@@ -41,9 +41,16 @@ export function loadSettings() {
 	} as const;
 }
 
+export function resetToDefaults() {
+	return {
+		type: "SETTINGS/RESET_TO_DEFAULTS"
+	} as const;
+}
+
 export type SettingsAction =
 	| ReturnType<typeof setUserName>
 	| ReturnType<typeof setInterfaceColor>
 	| ReturnType<typeof setClockDisplay>
 	| ReturnType<typeof setCtrlEnter>
-	| ReturnType<typeof setLanguage>;
+	| ReturnType<typeof setLanguage>
+	| ReturnType<typeof resetToDefaults>;

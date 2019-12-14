@@ -1,0 +1,5 @@
+@import "~bootstrap/scss/bootstrap";
+
+.resetButton {
+	@extend .btn, .btn-primary, .btn-lg, .btn-block;
+}

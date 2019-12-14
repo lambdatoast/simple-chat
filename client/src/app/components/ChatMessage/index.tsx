@@ -2,7 +2,7 @@ import * as React from "react";
 import * as classNames from "classnames";
 import * as moment from "moment";
 import * as style from "./style.scss";
-import { ChatMessageData } from "app/models";
+import { ChatMessageData, SettingsData } from "app/models";
 
 type RegExpResult<T> = {
 	fold: <T>(onFail: () => T, onSuccess: (r: RegExpMatchArray) => T) => T;
@@ -18,17 +18,24 @@ function findYouTubeLink<T>(s: string): RegExpResult<T> {
 		: { fold: (onFail, onSuccess) => onSuccess(result) };
 }
 
-export function ChatMessage(props: { data: ChatMessageData; isSelf: boolean }) {
-	const { data, isSelf } = props;
+interface ChatMessageProps {
+	data: ChatMessageData;
+	isSelf: boolean;
+	settings: SettingsData;
+}
+
+export function ChatMessage(props: ChatMessageProps) {
+	const { data, settings, isSelf } = props;
 	const classes = classNames({
 		[style.chatMessage]: true,
 		[style.self]: isSelf
 	});
+	const timeFormat = settings.clockDisplay === 12 ? "h:mmA" : "HH:mm";
 	return (
 		<div className={classes}>
 			<div className={style.userName}>
 				{!isSelf ? <span>{data.user.name}, </span> : null}
-				<span>{moment(data.time).format("h:mm")}</span>
+				<span>{moment(data.time).format(timeFormat)}</span>
 			</div>
 			<span>{data.text}</span>
 			{findYouTubeLink(data.text).fold(

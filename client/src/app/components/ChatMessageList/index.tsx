@@ -34,6 +34,7 @@ export class ChatMessageList extends React.Component<ChatMessageListProps> {
 			<div className={style.chatMessageList} ref={this.myRef}>
 				{messages.map((m, i) => (
 					<ChatMessage
+						settings={settings}
 						isSelf={m.user.name === settings.userName}
 						data={m}
 						key={`${i}-${m.user.name}`}
