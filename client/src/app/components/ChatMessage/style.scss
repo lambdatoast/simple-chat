@@ -4,19 +4,12 @@
 	padding: 10px;
 	border-radius: 6px;
 	position: relative;
-	.userName {
-		position: absolute;
-		top: -2em;
-		left: 0;
-		font-size: 0.7em;
-	}
 }
 
-.self {
+.chatMessageSelf {
 	align-self: flex-end;
 	background: #bef9fb;
-	.userName {
-		right: 0;
-		left: auto;
-	}
+}
+
+.chatMessageContentUrl {
 }
