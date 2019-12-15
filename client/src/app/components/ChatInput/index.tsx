@@ -20,30 +20,45 @@ export class ChatInput extends React.Component<ChatInputProps> {
 	render() {
 		const { settings } = this.props;
 		return (
-			<div className={style.chatInput}>
-				<textarea
-					aria-label="Enter message"
-					value={this.state.inputText}
-					placeholder="Enter message"
-					onChange={e => {
-						this.setState({ inputText: e.target.value });
-					}}
-					onKeyPress={e => {
-						const isCtrlEnter = e.key === "Enter" && e.ctrlKey;
-						if (isCtrlEnter && settings.ctrlEnter === "on") {
-							this.sendMessage();
-						}
-					}}
-				/>
-				<div
-					className={style.chatInputSendBtn}
-					onClick={() => {
-						this.sendMessage();
-					}}
-				>
-					Send
+			<>
+				<div>
+					Emojis
+					<a
+						href="#"
+						onClick={() => {
+							this.setState({
+								inputText: this.state.inputText + " [emoji:1f604] "
+							});
+						}}
+					>
+						:)
+					</a>
 				</div>
-			</div>
+				<div className={style.chatInput}>
+					<textarea
+						aria-label="Enter message"
+						value={this.state.inputText}
+						placeholder="Enter message"
+						onChange={e => {
+							this.setState({ inputText: e.target.value });
+						}}
+						onKeyPress={e => {
+							const isCtrlEnter = e.key === "Enter" && e.ctrlKey;
+							if (isCtrlEnter && settings.ctrlEnter === "on") {
+								this.sendMessage();
+							}
+						}}
+					/>
+					<div
+						className={style.chatInputSendBtn}
+						onClick={() => {
+							this.sendMessage();
+						}}
+					>
+						Send
+					</div>
+				</div>
+			</>
 		);
 	}
 }

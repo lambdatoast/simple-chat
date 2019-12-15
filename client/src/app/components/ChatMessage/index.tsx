@@ -11,6 +11,7 @@ type RegExpResult<T> = {
 const YOUTUBE_URL_REGEXP: RegExp = /(?:https:\/\/)www\.youtube\.com\/watch\?v=(\w+)/;
 const IMAGE_URL_REGEXP: RegExp = /(?:https?:\/\/.*\.(?:png|jpg|gif))/;
 const OTHER_URL_REGEXP: RegExp = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+const EMOJI_REGEXP: RegExp = /\[emoji:(\w+)\]/;
 
 function match<T>(r: RegExp, s: string): RegExpResult<T> {
 	const result: RegExpMatchArray | null = s.match(r);
@@ -21,7 +22,7 @@ function match<T>(r: RegExp, s: string): RegExpResult<T> {
 		: { fold: (onFail, onSuccess) => onSuccess(result) };
 }
 
-function parseMediaLinks(data: ChatMessageData) {
+function parse(data: ChatMessageData) {
 	const { text } = data;
 	return text.split(/\s/).map((s: string, i: number) =>
 		match(YOUTUBE_URL_REGEXP, s).fold(
@@ -29,7 +30,17 @@ function parseMediaLinks(data: ChatMessageData) {
 				match(IMAGE_URL_REGEXP, s).fold(
 					() =>
 						match(OTHER_URL_REGEXP, s).fold(
-							() => <span key={`text-${i}`}> {s} </span>,
+							() =>
+								match(EMOJI_REGEXP, s).fold(
+									() => <span key={`text-${i}`}> {s} </span>,
+									([editorCode, emojiCode]) => (
+										<img
+											className={style.chatMessageEmoji}
+											key={`emoji-${i}`}
+											src={`https://twemoji.maxcdn.com/v/12.1.4/72x72/${emojiCode.toLowerCase()}.png`}
+										/>
+									)
+								),
 							() => (
 								<a
 									className={style.chatMessageContentUrl}
@@ -71,7 +82,7 @@ export function ChatMessage(props: ChatMessageProps) {
 	return (
 		<div className={classes}>
 			<ChatMessageHeader data={data} settings={settings} isSelf={isSelf} />
-			<>{parseMediaLinks(data)}</>
+			<>{parse(data)}</>
 		</div>
 	);
 }

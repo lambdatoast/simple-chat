@@ -3,7 +3,10 @@ import * as socketIo from "socket.io";
 import { createServer, Server } from "http";
 import { ChatServerState } from "./models/ChatServerState";
 import { onMessage } from "./eventHandlers";
+import { cleanEmoji } from "./cleanEmoji";
 var cors = require("cors");
+const allEmoji = require("../public/emoji.json");
+const emoji = cleanEmoji(allEmoji);
 
 function createExpressApp(): express.Application {
 	const app: express.Application = express();
@@ -31,6 +34,8 @@ export function startServer() {
 
 		io.emit("guestUserName", `guest-${state.nextUID}`);
 		state.nextUID++;
+
+		io.emit("emoji", emoji);
 
 		socket.on("message", onMessage(io));
 
