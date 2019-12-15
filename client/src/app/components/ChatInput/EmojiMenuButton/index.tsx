@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as style from "./style.scss";
-import { EmojiMenuMode } from "../EmojiMenu/EmojiMenu";
+import { EmojiMenuMode } from "../EmojiMenu";
 
 interface EmojiMenuButtonProps {
 	menuState: EmojiMenuMode;

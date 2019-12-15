@@ -1,0 +1,23 @@
+@import "~bootstrap/scss/bootstrap";
+
+.chatEmojiCategories {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: flex-start;
+	overflow-x: scroll;
+}
+
+.chatEmojiCategory {
+	@extend .p-1;
+	@extend .border-right, .border-secondary;
+	margin: 0;
+	flex: 1;
+	white-space: nowrap;
+}
+
+.chatEmojiCategoryActive {
+	background: var(--primary);
+	color: var(--white);
+}

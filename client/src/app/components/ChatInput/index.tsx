@@ -3,7 +3,7 @@ import * as style from "./style.scss";
 import { ChatMessageData, SettingsData } from "app/models";
 import { MessageComposer } from "./MessageComposer";
 import { ButtonSend } from "./ButtonSend";
-import { EmojiMenu, EmojiMenuMode } from "./EmojiMenu/EmojiMenu";
+import { EmojiMenu, EmojiMenuMode } from "./EmojiMenu";
 import { EmojiMenuButton } from "./EmojiMenuButton";
 
 interface ChatInputProps {

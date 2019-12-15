@@ -11,6 +11,11 @@
 }
 
 .chatEmojiMenuOpen {
+	@extend .p-3;
 	flex: 10;
 	overflow-y: scroll;
+}
+
+.chatEmojiTable {
+	flex: 1;
 }
