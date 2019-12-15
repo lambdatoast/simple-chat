@@ -14,15 +14,22 @@ interface HeaderComponentProps {
 	setActivePage: (p: NavigationPage) => void;
 }
 
-const classes = (root: string, p: NavigationPage, n: NavigationState) =>
+const classes = (
+	root: string,
+	p: NavigationPage,
+	n: NavigationState,
+	shouldBlink: boolean = false
+) =>
 	classNames({
 		[style[`${root}`]]: true,
 		[style[`${root}Active`]]: n.activePage === p,
-		[style[`${root}Default`]]: n.activePage !== p
+		[style[`${root}Default`]]: n.activePage !== p,
+		[style[`${root}Blinking`]]: shouldBlink
 	});
 
 function HeaderComponent(props: HeaderComponentProps) {
 	const { setActivePage, navigation } = props;
+	const hasUnreadMessages = navigation.unreadCount > 0;
 	return (
 		<nav className={style.nav}>
 			<ul className={style.navList}>
@@ -35,10 +42,15 @@ function HeaderComponent(props: HeaderComponentProps) {
 						}}
 					>
 						<ChatIcon
-							className={classes("navLinkIcon", "Chat", navigation)}
+							className={classes(
+								"navLinkIcon",
+								"Chat",
+								navigation,
+								hasUnreadMessages
+							)}
 							height="2em"
 						/>
-						{navigation.unreadCount > 0 ? (
+						{hasUnreadMessages ? (
 							<span className={style.unreadCount}>
 								{navigation.unreadCount}
 							</span>

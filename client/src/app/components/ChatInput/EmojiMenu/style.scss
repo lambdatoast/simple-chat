@@ -1,0 +1,21 @@
+@import "~bootstrap/scss/bootstrap";
+
+.chatEmojiMenu {
+	transition: all 0.7s;
+	background: var(--white);
+}
+
+.chatEmojiMenuClosed {
+	flex: 0;
+	overflow: hidden;
+}
+
+.chatEmojiMenuOpen {
+	@extend .p-3;
+	flex: 10;
+	overflow-y: scroll;
+}
+
+.chatEmojiTable {
+	flex: 1;
+}

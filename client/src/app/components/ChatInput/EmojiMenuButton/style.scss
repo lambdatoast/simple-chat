@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/bootstrap";
+
+.chatEmojiMenuButton {
+	@extend .input-group-prepend, .btn;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.chatEmojiMenuButtonIcon {
+	fill: var(--dark);
+}
+
+.chatEmojiMenuButtonIconActive {
+	fill: var(--primary);
+}

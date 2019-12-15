@@ -3,12 +3,20 @@ import * as socketIo from "socket.io";
 import { createServer, Server } from "http";
 import { ChatServerState } from "./models/ChatServerState";
 import { onMessage } from "./eventHandlers";
+import { cleanEmoji } from "./cleanEmoji";
 var cors = require("cors");
+const allEmoji = require("../public/emoji.json");
+const emoji = cleanEmoji(allEmoji);
 
 function createExpressApp(): express.Application {
 	const app: express.Application = express();
 	app.use(cors());
 	app.options("*", cors());
+	app.get("/api/emoji", (req, res, next) => {
+		console.log("eeeermmm");
+		res.json(emoji);
+		next();
+	});
 	return app;
 }
 

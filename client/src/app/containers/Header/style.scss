@@ -42,9 +42,24 @@
 	fill: var(--primary);
 }
 
+.navLinkIconBlinking {
+	animation: has-unread-messages 2s infinite linear;
+}
+
 .unreadCount {
-	@extend .badge, .badge-pill, .badge-success;
+	@extend .badge;
 	position: absolute;
-	top: 0px;
-	right: -10px;
+	top: 0.1em;
+	right: 0;
+	background: var(--info);
+	color: var(--white);
+}
+
+@keyframes has-unread-messages {
+	0% {
+		fill: var(--info);
+	}
+	50% {
+		fill: var(--dark);
+	}
 }
