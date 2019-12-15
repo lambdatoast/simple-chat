@@ -12,6 +12,11 @@ function createExpressApp(): express.Application {
 	const app: express.Application = express();
 	app.use(cors());
 	app.options("*", cors());
+	app.get("/api/emoji", (req, res, next) => {
+		console.log("eeeermmm");
+		res.json(emoji);
+		next();
+	});
 	return app;
 }
 
@@ -34,8 +39,6 @@ export function startServer() {
 
 		io.emit("guestUserName", `guest-${state.nextUID}`);
 		state.nextUID++;
-
-		io.emit("emoji", emoji);
 
 		socket.on("message", onMessage(io));
 

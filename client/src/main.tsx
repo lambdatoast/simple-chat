@@ -35,19 +35,6 @@ socket.on("guestUserName", (userName: string) => {
 	}
 });
 
-type EmojiSpec = {
-	codes: string;
-	char: string;
-	name: string;
-	category: string;
-};
-
-type EmojiByCategory = { [k: string]: EmojiSpec[] };
-
-socket.on("emoji", (emoji: EmojiByCategory) => {
-	console.log(emoji);
-});
-
 // Log the initial state
 console.log(store.getState());
 

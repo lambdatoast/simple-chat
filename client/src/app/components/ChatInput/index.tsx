@@ -3,6 +3,8 @@ import * as style from "./style.scss";
 import { ChatMessageData, SettingsData } from "app/models";
 import { MessageComposer } from "./MessageComposer";
 import { ButtonSend } from "./ButtonSend";
+import { EmojiMenu, EmojiMenuMode } from "./EmojiMenu/EmojiMenu";
+import { EmojiMenuButton } from "./EmojiMenuButton";
 
 interface ChatInputProps {
 	settings: SettingsData;
@@ -11,10 +13,13 @@ interface ChatInputProps {
 
 interface ChatInputState {
 	messageText: string;
+	emojiMenuState: EmojiMenuMode;
 }
 
+const DEFAULT_EMOJI_MENU_STATE: EmojiMenuMode = "closed";
+
 export class ChatInput extends React.Component<ChatInputProps, ChatInputState> {
-	state = { messageText: "" };
+	state = { messageText: "", emojiMenuState: DEFAULT_EMOJI_MENU_STATE };
 	sendMessage = () => {
 		this.props.sendMessage({
 			text: this.state.messageText,
@@ -26,22 +31,25 @@ export class ChatInput extends React.Component<ChatInputProps, ChatInputState> {
 	setMessageText = (messageText: string) => {
 		this.setState({ messageText });
 	};
+	onEmojiSelect = (code: string) => {
+		this.setMessageText(this.state.messageText + ` ${code} `);
+	};
+	setEmojiMenuState = (emojiMenuState: EmojiMenuMode) => {
+		this.setState({ emojiMenuState });
+	};
 	render() {
 		const { settings } = this.props;
 		return (
 			<>
-				<div>
-					Emojis
-					<a
-						href="#"
-						onClick={() => {
-							this.setMessageText(this.state.messageText + " [emoji:1f604] ");
-						}}
-					>
-						:)
-					</a>
-				</div>
+				<EmojiMenu
+					menuState={this.state.emojiMenuState}
+					onSelect={this.onEmojiSelect}
+				/>
 				<div className={style.chatInputContainer}>
+					<EmojiMenuButton
+						menuState={this.state.emojiMenuState}
+						onClick={this.setEmojiMenuState}
+					/>
 					<MessageComposer
 						value={this.state.messageText}
 						onChange={this.setMessageText}
