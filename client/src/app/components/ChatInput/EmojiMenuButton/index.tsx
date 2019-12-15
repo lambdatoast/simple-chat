@@ -1,6 +1,8 @@
 import * as React from "react";
 import * as style from "./style.scss";
 import { EmojiMenuMode } from "../EmojiMenu";
+import HappyIcon from "./icons/happy.svg";
+import * as classNames from "classnames";
 
 interface EmojiMenuButtonProps {
 	menuState: EmojiMenuMode;
@@ -16,7 +18,13 @@ export function EmojiMenuButton(props: EmojiMenuButtonProps) {
 				props.onClick(menuState === "closed" ? "open" : "closed");
 			}}
 		>
-			E
+			<HappyIcon
+				className={classNames({
+					[style.chatEmojiMenuButtonIcon]: menuState === "closed",
+					[style.chatEmojiMenuButtonIconActive]: menuState === "open"
+				})}
+				height="2em"
+			/>
 		</button>
 	);
 }
