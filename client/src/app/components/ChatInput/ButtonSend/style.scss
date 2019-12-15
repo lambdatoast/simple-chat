@@ -1,12 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
 
-.chatInputContainer {
-	@extend .input-group;
-	flex: 2;
-	padding: 15px;
-	display: flex;
-}
-
 .chatInputSendBtn {
 	@extend .input-group-append, .btn, .btn-primary;
 	flex: 1;

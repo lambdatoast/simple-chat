@@ -1,21 +1,30 @@
 import * as React from "react";
 import * as style from "./style.scss";
 import { ChatMessageData, SettingsData } from "app/models";
+import { MessageComposer } from "./MessageComposer";
+import { ButtonSend } from "./ButtonSend";
 
 interface ChatInputProps {
 	settings: SettingsData;
 	sendMessage: (message: ChatMessageData) => void;
 }
 
-export class ChatInput extends React.Component<ChatInputProps> {
-	state = { inputText: "" };
+interface ChatInputState {
+	messageText: string;
+}
+
+export class ChatInput extends React.Component<ChatInputProps, ChatInputState> {
+	state = { messageText: "" };
 	sendMessage = () => {
 		this.props.sendMessage({
-			text: this.state.inputText,
+			text: this.state.messageText,
 			time: +new Date(),
 			user: { name: this.props.settings.userName }
 		});
-		this.setState({ inputText: "" });
+		this.setMessageText("");
+	};
+	setMessageText = (messageText: string) => {
+		this.setState({ messageText });
 	};
 	render() {
 		const { settings } = this.props;
@@ -26,37 +35,23 @@ export class ChatInput extends React.Component<ChatInputProps> {
 					<a
 						href="#"
 						onClick={() => {
-							this.setState({
-								inputText: this.state.inputText + " [emoji:1f604] "
-							});
+							this.setMessageText(this.state.messageText + " [emoji:1f604] ");
 						}}
 					>
 						:)
 					</a>
 				</div>
-				<div className={style.chatInput}>
-					<textarea
-						aria-label="Enter message"
-						value={this.state.inputText}
-						placeholder="Enter message"
-						onChange={e => {
-							this.setState({ inputText: e.target.value });
-						}}
-						onKeyPress={e => {
-							const isCtrlEnter = e.key === "Enter" && e.ctrlKey;
-							if (isCtrlEnter && settings.ctrlEnter === "on") {
-								this.sendMessage();
-							}
-						}}
+				<div className={style.chatInputContainer}>
+					<MessageComposer
+						value={this.state.messageText}
+						onChange={this.setMessageText}
+						settings={settings}
+						sendMessage={this.sendMessage}
 					/>
-					<div
-						className={style.chatInputSendBtn}
-						onClick={() => {
-							this.sendMessage();
-						}}
-					>
-						Send
-					</div>
+					<ButtonSend
+						hide={settings.ctrlEnter === "on"}
+						onClick={this.sendMessage}
+					/>
 				</div>
 			</>
 		);

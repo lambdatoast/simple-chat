@@ -1,0 +1,6 @@
+@import "~bootstrap/scss/bootstrap";
+
+.chatInputText {
+	@extend .form-control;
+	flex: 5;
+}
