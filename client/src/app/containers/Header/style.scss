@@ -2,23 +2,49 @@
 
 .nav {
 	flex: 1;
-	ul {
-		@extend .nav;
-		li {
-			@extend .nav-item;
-			a {
-				@extend .nav-link;
-				position: relative;
-			}
-			a:active {
-				border-bottom: 2px solid #ccc;
-			}
-			.unreadCount {
-				@extend .badge, .badge-pill, .badge-success;
-				position: absolute;
-				top: 0px;
-				right: -10px;
-			}
-		}
-	}
+}
+
+.navList {
+	@extend .nav;
+}
+
+.navItem {
+	@extend .nav-item;
+}
+
+.navLink {
+	@extend .nav-link;
+	position: relative;
+}
+
+.navLinkDefault {
+	color: var(--dark);
+}
+
+.navLinkActive {
+	color: var(--primary);
+}
+
+.navLinkActive,
+.navLink:active {
+	color: var(--primary);
+}
+
+.navLinkIcon {
+	height: 2em;
+}
+
+.navLinkIconDefault {
+	fill: var(--dark);
+}
+
+.navLinkIconActive {
+	fill: var(--primary);
+}
+
+.unreadCount {
+	@extend .badge, .badge-pill, .badge-success;
+	position: absolute;
+	top: 0px;
+	right: -10px;
 }
