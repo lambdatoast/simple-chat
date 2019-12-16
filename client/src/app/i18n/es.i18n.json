@@ -1,0 +1,29 @@
+{
+	"title": {
+		"chat": "Chat",
+		"settings": "Configuración"
+	},
+	"label": {
+		"userName": "Nombre de usuario",
+		"interfaceColor": "Color de la interfaz",
+		"clockDisplay": "Formato de fecha",
+		"ctrlEnter": "Enviar mensajes con CTRL + ENTER",
+		"language": "Idioma",
+		"light": "Claro",
+		"dark": "Oscuro",
+		"hours": "Horas",
+		"on": "Encendido",
+		"off": "Apagado"
+	},
+	"action": {
+		"resetToDefaults": "Reiniciar configuración"
+	},
+	"input": {
+		"enterMessage": "Escribe un mensaje",
+		"enterMessageHelp": "(CTRL + ENTER para enviar)"
+	},
+	"language": {
+		"en": "Inglés",
+		"es": "Español"
+	}
+}

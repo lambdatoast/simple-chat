@@ -1,0 +1,29 @@
+{
+	"title": {
+		"chat": "Chat",
+		"settings": "Settings"
+	},
+	"label": {
+		"userName": "User name",
+		"interfaceColor": "Interface color",
+		"clockDisplay": "Clock display",
+		"ctrlEnter": "Send messages on CTRL + ENTER",
+		"language": "Language",
+		"light": "Light",
+		"dark": "Dark",
+		"hours": "Hours",
+		"on": "On",
+		"off": "Off"
+	},
+	"action": {
+		"resetToDefaults": "Reset to defaults"
+	},
+	"input": {
+		"enterMessage": "Write a message",
+		"enterMessageHelp": "(CTRL + ENTER to send)"
+	},
+	"language": {
+		"en": "English",
+		"es": "Spanish"
+	}
+}

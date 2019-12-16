@@ -11,6 +11,7 @@ import * as classNames from "classnames";
 
 interface HeaderComponentProps {
 	navigation: NavigationState;
+	literals: i18n.I18nLiterals;
 	setActivePage: (p: NavigationPage) => void;
 }
 
@@ -28,7 +29,7 @@ const classes = (
 	});
 
 function HeaderComponent(props: HeaderComponentProps) {
-	const { setActivePage, navigation } = props;
+	const { setActivePage, navigation, literals } = props;
 	const hasUnreadMessages = navigation.unreadCount > 0;
 	return (
 		<nav className={style.nav}>
@@ -55,7 +56,7 @@ function HeaderComponent(props: HeaderComponentProps) {
 								{navigation.unreadCount}
 							</span>
 						) : null}
-						<span>Chat</span>
+						<span>{literals.title.chat}</span>
 					</Link>
 				</li>
 				<li className={style.navItem}>
@@ -70,7 +71,7 @@ function HeaderComponent(props: HeaderComponentProps) {
 							className={classes("navLinkIcon", "Settings", navigation)}
 							height="2em"
 						/>
-						<span>Settings</span>
+						<span>{literals.title.settings}</span>
 					</Link>
 				</li>
 			</ul>
@@ -80,7 +81,8 @@ function HeaderComponent(props: HeaderComponentProps) {
 
 function mapStateToProps(state: AppState) {
 	return {
-		navigation: state.navigation
+		navigation: state.navigation,
+		literals: state.i18n.literals
 	};
 }
 

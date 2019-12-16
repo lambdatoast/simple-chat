@@ -4,18 +4,19 @@ import { SettingsFormLabel } from "../SettingsFormLabel";
 
 interface UserNameFieldProps {
 	value: UserName;
+	label: string;
 	onChange: (value: UserName) => void;
 }
 
 export function UserNameField(props: UserNameFieldProps) {
-	const userName = props.value;
+	const { value, label } = props;
 	return (
 		<>
-			<SettingsFormLabel>User name</SettingsFormLabel>
+			<SettingsFormLabel>{label}</SettingsFormLabel>
 			<input
 				name="userName"
 				type="text"
-				value={userName}
+				value={value}
 				onChange={(e: { target: { value: UserName } }) => {
 					props.onChange(e.target.value);
 				}}

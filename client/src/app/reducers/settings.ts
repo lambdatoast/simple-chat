@@ -22,6 +22,8 @@ export function settingsReducer(
 			return { ...state, clockDisplay: action.value };
 		case "SETTINGS/SET_CTRL_ENTER":
 			return { ...state, ctrlEnter: action.value };
+		case "SETTINGS/SET_LANGUAGE":
+			return { ...state, language: action.value };
 		case "SETTINGS/RESET_TO_DEFAULTS":
 			return { ...initialState };
 		default:
