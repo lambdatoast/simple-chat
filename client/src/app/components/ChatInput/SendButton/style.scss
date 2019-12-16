@@ -1,9 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 
 .chatInputSendBtn {
-	@extend .input-group-append, .btn, .btn-primary;
+	@extend .input-group-append, .btn;
 	flex: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border: 1px solid var(--text-color);
+}
+
+.chatInputSendBtnIcon {
+	fill: var(--text-color);
 }
