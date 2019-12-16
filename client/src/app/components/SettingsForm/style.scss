@@ -5,7 +5,7 @@
 	padding: 2%;
 }
 
-.settingsForm input {
+.settingsForm input[type="radio"] {
 	@extend .form-control;
 }
 

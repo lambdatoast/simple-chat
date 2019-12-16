@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as style from "./style.scss";
 import { UserName } from "app/models";
 import { SettingsFormLabel } from "../SettingsFormLabel";
 
@@ -14,6 +15,7 @@ export function UserNameField(props: UserNameFieldProps) {
 		<>
 			<SettingsFormLabel>{label}</SettingsFormLabel>
 			<input
+				className={style.userNameInput}
 				name="userName"
 				type="text"
 				value={value}

@@ -2,7 +2,7 @@
 
 .resetButton {
 	@extend .btn, .btn-lg, .btn-block;
-	background: var(--bg-level-2);
+	background: var(--bg-reset-btn);
 	color: var(--danger);
 	border: 1px solid var(--danger);
 	position: absolute;

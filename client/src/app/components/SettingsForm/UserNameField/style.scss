@@ -1,12 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
-.settingsFormSelect {
+.userNameInput {
 	@extend .form-control;
 	background-color: var(--bg-chat-message-self);
 	color: var(--text-color-chat-message-self);
-}
-
-.settingsFormSelect:focus {
-	background-color: var(--bg-chat-message);
-	color: var(--text-color-chat-message);
 }

@@ -1,5 +1,4 @@
 @import "~bootstrap/scss/bootstrap";
-@import "~bootstrap/scss/_variables";
 
 .page {
 	height: 100%;
@@ -21,6 +20,8 @@
 	--text-color-chat-message: var(--dark);
 	--bg-chat-message-self: var(--light);
 	--text-color-chat-message-self: var(--gray-dark);
+	/* Settings */
+	--bg-reset-btn: var(--white);
 }
 
 .page[data-theme="dark"] {
@@ -37,4 +38,6 @@
 	--text-color-chat-message: var(--light);
 	--bg-chat-message-self: var(--gray-dark);
 	--text-color-chat-message-self: var(--light);
+	/* Settings */
+	--bg-reset-btn: #111;
 }
