@@ -7,7 +7,7 @@ interface EmojiCellProps {
 	data: EmojiSpec;
 }
 
-export class EmojiCell extends React.Component<EmojiCellProps> {
+export class EmojiCell extends React.PureComponent<EmojiCellProps> {
 	render() {
 		const { onSelect, data } = this.props;
 		// only first part needed for CDN png path, it seems.
@@ -20,7 +20,10 @@ export class EmojiCell extends React.Component<EmojiCellProps> {
 						onSelect(`[emoji:${code}]`);
 					}}
 				>
-					{data.char}
+					<img
+						className={style.emojiCellEmoji}
+						src={`https://twemoji.maxcdn.com/v/12.1.4/72x72/${code.toLowerCase()}.png`}
+					/>
 				</a>
 			</td>
 		);
