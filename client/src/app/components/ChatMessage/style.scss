@@ -4,11 +4,14 @@
 	padding: 10px;
 	border-radius: 6px;
 	position: relative;
+	background: var(--bg-chat-message);
+	color: var(--text-color-chat-message);
 }
 
 .chatMessageSelf {
 	align-self: flex-end;
-	background: #bef9fb;
+	background: var(--bg-chat-message-self);
+	color: var(--text-color-chat-message-self);
 }
 
 .chatMessageEmoji {

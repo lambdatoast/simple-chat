@@ -16,6 +16,7 @@ import {
 	resetToDefaults
 } from "app/actions";
 import { connect } from "react-redux";
+import { Page } from "../Page";
 
 interface SettingsProps {
 	settings: SettingsData;
@@ -28,16 +29,18 @@ interface SettingsProps {
 
 function SettingsComponent(props: SettingsProps) {
 	return (
-		<SettingsForm
-			data={props.settings}
-			setters={{
-				setUserName: props.setUserName,
-				setInterfaceColor: props.setInterfaceColor,
-				setCtrlEnter: props.setCtrlEnter,
-				setClockDisplay: props.setClockDisplay,
-				resetToDefaults: props.resetToDefaults
-			}}
-		/>
+		<Page settings={props.settings}>
+			<SettingsForm
+				data={props.settings}
+				setters={{
+					setUserName: props.setUserName,
+					setInterfaceColor: props.setInterfaceColor,
+					setCtrlEnter: props.setCtrlEnter,
+					setClockDisplay: props.setClockDisplay,
+					resetToDefaults: props.resetToDefaults
+				}}
+			/>
+		</Page>
 	);
 }
 

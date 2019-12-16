@@ -1,6 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 .chatEmojiMenu {
+	@extend .m-3;
 	transition: all 0.7s;
 	background: var(--white);
 }
@@ -11,7 +12,6 @@
 }
 
 .chatEmojiMenuOpen {
-	@extend .p-3;
 	flex: 10;
 	overflow-y: scroll;
 }

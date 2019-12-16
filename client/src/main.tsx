@@ -6,12 +6,12 @@ import * as io from "socket.io-client";
 import "bootstrap";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
-import { Chat, Settings, Header } from "app/containers";
+import { Chat, Settings } from "app/containers";
 import { appReducer } from "app/reducers";
 import { ChatMessageData } from "app/models";
 import { appendMessage, setUserName } from "app/actions";
 import { socketMiddleware } from "app/middleware/socket";
-import * as style from "./style.scss";
+import "./style.scss";
 import { settingsStorage } from "app/middleware/settingsStorage";
 
 const socket: SocketIOClient.Socket = io("localhost:5001");
@@ -43,17 +43,14 @@ store.subscribe(() => console.log(store.getState()));
 ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
-			<div className={style.page}>
-				<Header />
-				<Switch>
-					<Route path="/settings">
-						<Settings />
-					</Route>
-					<Route path="/">
-						<Chat />
-					</Route>
-				</Switch>
-			</div>
+			<Switch>
+				<Route path="/settings">
+					<Settings />
+				</Route>
+				<Route path="/">
+					<Chat />
+				</Route>
+			</Switch>
 		</BrowserRouter>
 	</Provider>,
 	document.getElementById("root")
