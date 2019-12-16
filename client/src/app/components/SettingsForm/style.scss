@@ -3,13 +3,27 @@
 .settingsForm {
 	flex: 11;
 	padding: 15px;
+}
+
+.settingsForm input {
+	@extend .form-control;
+}
+
+.radioGroup {
+	@extend .input-group;
+}
+
+.formCheck {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1em;
 	input {
-		@extend .form-control;
+		flex: 1;
 	}
-	.radioGroup {
-		@extend .input-group;
-		.formCheck {
-			flex: 1;
-		}
+	label {
+		flex: 1;
+		margin: 0;
 	}
 }

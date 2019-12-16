@@ -1,5 +1,6 @@
 import * as React from "react";
 import { UserName } from "app/models";
+import { SettingsFormLabel } from "../SettingsFormLabel";
 
 interface UserNameFieldProps {
 	value: UserName;
@@ -10,7 +11,7 @@ export function UserNameField(props: UserNameFieldProps) {
 	const userName = props.value;
 	return (
 		<>
-			<label htmlFor="userName">User name</label>
+			<SettingsFormLabel>User name</SettingsFormLabel>
 			<input
 				name="userName"
 				type="text"

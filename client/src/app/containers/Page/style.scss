@@ -1,0 +1,40 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/_variables";
+
+.page {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: var(--bg);
+	color: var(--text-color);
+
+	--bg: var(--white);
+	--bg-level-2: #f8f9fa;
+	--bg-level-3: #e5e8eb;
+	--bg-level-4: #d6d7d8;
+	--text-color: var(--dark);
+	--primary: var(--blue);
+	--btn-text-color: var(--white);
+	/* Chat messages */
+	--bg-chat-message: var(--white);
+	--text-color-chat-message: var(--dark);
+	--bg-chat-message-self: var(--light);
+	--text-color-chat-message-self: var(--gray-dark);
+}
+
+.page[data-theme="dark"] {
+	/* General */
+	--bg: #262a2e;
+	--bg-level-2: var(--dark);
+	--bg-level-3: #343a40d4;
+	--bg-level-4: #343a40ab;
+	--text-color: var(--light);
+	--primary: #46b5d1;
+	--btn-text-color: var(--dark);
+	/* Chat messages */
+	--bg-chat-message: var(--gray-dark);
+	--text-color-chat-message: var(--light);
+	--bg-chat-message-self: var(--gray-dark);
+	--text-color-chat-message-self: var(--light);
+}

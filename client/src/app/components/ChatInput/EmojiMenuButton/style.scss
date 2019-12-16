@@ -6,10 +6,17 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border: 1px solid var(--text-color);
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.chatEmojiMenuButtonActive {
+	border: 1px solid var(--primary);
 }
 
 .chatEmojiMenuButtonIcon {
-	fill: var(--dark);
+	fill: var(--text-color);
 }
 
 .chatEmojiMenuButtonIconActive {

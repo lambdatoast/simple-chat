@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as style from "./style.scss";
 import { EmojiSpec } from "app/models/Emoji";
 
 interface EmojiCellProps {
@@ -14,7 +15,7 @@ export class EmojiCell extends React.Component<EmojiCellProps> {
 		return (
 			<td>
 				<a
-					href="#"
+					className={style.emojiCellBtn}
 					onClick={() => {
 						onSelect(`[emoji:${code}]`);
 					}}

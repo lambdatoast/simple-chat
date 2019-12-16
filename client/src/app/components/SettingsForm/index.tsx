@@ -7,7 +7,7 @@ import {
 	CtrlEnter,
 	ClockDisplay
 } from "app/models";
-import { InterfaceColorField } from "./InterfaceColorField/InterfaceColorField";
+import { InterfaceColorField } from "./InterfaceColorField";
 import { CtrlEnterField } from "./CtrlEnterField";
 import { UserNameField } from "./UserNameField";
 import { ClockDisplayField } from "./ClockDisplayField";

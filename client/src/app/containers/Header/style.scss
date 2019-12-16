@@ -49,10 +49,11 @@
 .unreadCount {
 	@extend .badge;
 	position: absolute;
-	top: 0.1em;
-	right: 0;
-	background: var(--info);
-	color: var(--white);
+	top: 1em;
+	left: 1em;
+	font-size: 70%;
+	background: var(--primary);
+	color: var(--text-color);
 }
 
 @keyframes has-unread-messages {

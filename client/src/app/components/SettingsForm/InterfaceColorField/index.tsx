@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as style from "../style.scss";
 import { InterfaceColor } from "app/models";
+import { SettingsFormLabel } from "../SettingsFormLabel";
 
 interface InterfaceColorFieldProps {
 	value: InterfaceColor;
@@ -11,7 +12,7 @@ export function InterfaceColorField(props: InterfaceColorFieldProps) {
 	const interfaceColor = props.value;
 	return (
 		<>
-			<label>Interface Color</label>
+			<SettingsFormLabel>Interface Color</SettingsFormLabel>
 			<div className={style.radioGroup}>
 				<div className={style.formCheck}>
 					<input

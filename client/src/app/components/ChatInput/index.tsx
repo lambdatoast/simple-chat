@@ -2,7 +2,7 @@ import * as React from "react";
 import * as style from "./style.scss";
 import { ChatMessageData, SettingsData } from "app/models";
 import { MessageComposer } from "./MessageComposer";
-import { ButtonSend } from "./ButtonSend";
+import { SendButton } from "./SendButton";
 import { EmojiMenu, EmojiMenuMode } from "./EmojiMenu";
 import { EmojiMenuButton } from "./EmojiMenuButton";
 
@@ -56,7 +56,7 @@ export class ChatInput extends React.Component<ChatInputProps, ChatInputState> {
 						settings={settings}
 						sendMessage={this.sendMessage}
 					/>
-					<ButtonSend
+					<SendButton
 						hide={settings.ctrlEnter === "on"}
 						onClick={this.sendMessage}
 					/>
