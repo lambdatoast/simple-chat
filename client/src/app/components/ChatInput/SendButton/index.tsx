@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as style from "./style.scss";
-import HappyIcon from "./icons/send.svg";
+import SendIcon from "./icons/send.svg";
 
 interface SendButtonProps {
 	hide: boolean;
@@ -15,7 +15,7 @@ export function SendButton(props: SendButtonProps) {
 				props.onClick();
 			}}
 		>
-			<HappyIcon className={style.chatInputSendBtnIcon} height="2em" />
+			<SendIcon className={style.chatInputSendBtnIcon} />
 		</button>
 	);
 }

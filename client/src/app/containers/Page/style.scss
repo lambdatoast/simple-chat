@@ -41,3 +41,10 @@
 	/* Settings */
 	--bg-reset-btn: #111;
 }
+
+@include media-breakpoint-up(md) {
+	.page {
+		padding-left: 20%;
+		padding-right: 20%;
+	}
+}

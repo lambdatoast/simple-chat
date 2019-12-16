@@ -4,4 +4,11 @@
 	@extend .form-control;
 	flex: 5;
 	border-radius: 0;
+	background-color: var(--bg-chat-message);
+	color: var(--text-color-chat-message);
+}
+
+.chatInputText:focus {
+	background-color: var(--bg-chat-message-self);
+	color: var(--text-color-chat-message-self);
 }

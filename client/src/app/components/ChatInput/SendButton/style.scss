@@ -9,8 +9,10 @@
 	border: 1px solid var(--text-color);
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
+	min-height: fit-content;
 }
 
 .chatInputSendBtnIcon {
 	fill: var(--text-color);
+	height: 2em;
 }
