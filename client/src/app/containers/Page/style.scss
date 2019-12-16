@@ -1,4 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/_variables";
 
 .page {
 	height: 100%;
@@ -9,6 +10,7 @@
 	color: var(--text-color);
 
 	--bg: var(--white);
+	--bg-level-2: var(--light);
 	--text-color: var(--dark);
 	--primary: var(--blue);
 	--btn-text-color: var(--white);
@@ -21,9 +23,12 @@
 
 .page[data-theme="dark"] {
 	/* General */
-	--bg: var(--dark);
+	--bg: #262a2e;
+	--bg-level-2: var(--dark);
+	--bg-level-3: #343a40d4;
+	--bg-level-4: #343a40ab;
 	--text-color: var(--light);
-	--primary: var(--teal);
+	--primary: #46b5d1;
 	--btn-text-color: var(--dark);
 	/* Chat messages */
 	--bg-chat-message: var(--gray-dark);

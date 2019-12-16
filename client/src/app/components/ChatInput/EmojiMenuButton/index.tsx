@@ -13,7 +13,10 @@ export function EmojiMenuButton(props: EmojiMenuButtonProps) {
 	const { menuState } = props;
 	return (
 		<button
-			className={style.chatEmojiMenuButton}
+			className={classNames({
+				[style.chatEmojiMenuButton]: true,
+				[style.chatEmojiMenuButtonActive]: menuState === "open"
+			})}
 			onClick={() => {
 				props.onClick(menuState === "closed" ? "open" : "closed");
 			}}
