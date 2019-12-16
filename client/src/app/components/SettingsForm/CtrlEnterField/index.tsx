@@ -5,39 +5,42 @@ import { SettingsFormLabel } from "../SettingsFormLabel";
 
 interface CtrlEnterFieldProps {
 	value: CtrlEnter;
+	label: string;
+	optionLabel1: string;
+	optionLabel2: string;
 	onChange: (value: CtrlEnter) => void;
 }
 
 export function CtrlEnterField(props: CtrlEnterFieldProps) {
-	const ctrlEnter = props.value;
+	const { value, label, optionLabel1, optionLabel2 } = props;
 	return (
 		<>
-			<SettingsFormLabel>Send messages on CTRL + ENTER</SettingsFormLabel>
+			<SettingsFormLabel>{label}</SettingsFormLabel>
 			<div className={style.radioGroup}>
 				<div className={style.formCheck}>
 					<input
 						type="radio"
 						name="ctrlEnterOn"
-						checked={ctrlEnter === "on"}
+						checked={value === "on"}
 						onChange={e => {
 							props.onChange("on");
 						}}
 					/>
 					<label className="form-check-label" htmlFor="ctrlEnterOn">
-						On
+						{optionLabel1}
 					</label>
 				</div>
 				<div className={style.formCheck}>
 					<input
 						type="radio"
 						name="ctrlEnterOff"
-						checked={ctrlEnter === "off"}
+						checked={value === "off"}
 						onChange={e => {
 							props.onChange("off");
 						}}
 					/>
 					<label className="form-check-label" htmlFor="ctrlEnterOff">
-						Off
+						{optionLabel2}
 					</label>
 				</div>
 			</div>

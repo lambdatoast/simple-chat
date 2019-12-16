@@ -5,14 +5,17 @@ import { SettingsFormLabel } from "../SettingsFormLabel";
 
 interface ClockDisplayFieldProps {
 	value: ClockDisplay;
+	label: string;
+	optionLabel1: string;
+	optionLabel2: string;
 	onChange: (value: ClockDisplay) => void;
 }
 
 export function ClockDisplayField(props: ClockDisplayFieldProps) {
-	const value = props.value;
+	const { value, label, optionLabel1, optionLabel2 } = props;
 	return (
 		<>
-			<SettingsFormLabel>Clock display</SettingsFormLabel>
+			<SettingsFormLabel>{label}</SettingsFormLabel>
 			<div className={style.radioGroup}>
 				<div className={style.formCheck}>
 					<input
@@ -25,7 +28,7 @@ export function ClockDisplayField(props: ClockDisplayFieldProps) {
 						}}
 					/>
 					<label className="form-check-label" htmlFor="value12">
-						12 Hours
+						{optionLabel1}
 					</label>
 				</div>
 				<div className={style.formCheck}>
@@ -38,7 +41,7 @@ export function ClockDisplayField(props: ClockDisplayFieldProps) {
 						}}
 					/>
 					<label className="form-check-label" htmlFor="value24">
-						24 Hours
+						{optionLabel2}
 					</label>
 				</div>
 			</div>

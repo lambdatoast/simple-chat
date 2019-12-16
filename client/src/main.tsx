@@ -8,22 +8,32 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Chat, Settings } from "app/containers";
 import { appReducer } from "app/reducers";
-import { ChatMessageData } from "app/models";
+import { ChatMessageData, SettingsData } from "app/models";
 import { appendMessage, setUserName } from "app/actions";
 import { socketMiddleware } from "app/middleware/socket";
 import "./style.scss";
 import { settingsStorage } from "app/middleware/settingsStorage";
+import { loadLanguage } from "app/i18n";
+import { loadLiterals } from "app/actions/i18n";
 
 const socket: SocketIOClient.Socket = io("localhost:5001");
 
-const settings = localStorage.getItem("settings");
+const settingsSerialized: string | null = localStorage.getItem("settings");
+const settings: SettingsData | null = settingsSerialized
+	? JSON.parse(settingsSerialized)
+	: null;
 
 // prepare store
 const store = createStore(
 	appReducer,
-	settings ? { settings: JSON.parse(settings) } : {},
+	settings ? { settings } : {},
 	applyMiddleware(thunkMiddleware, socketMiddleware(socket), settingsStorage)
 );
+
+if (settings) {
+	const lang: i18n.I18nLiterals = loadLanguage(settings.language);
+	store.dispatch(loadLiterals(lang));
+}
 
 socket.on("message", (m: ChatMessageData) => {
 	store.dispatch(appendMessage(m));

@@ -5,7 +5,8 @@ import {
 	UserName,
 	InterfaceColor,
 	CtrlEnter,
-	ClockDisplay
+	ClockDisplay,
+	Language
 } from "app/models";
 import { AppState } from "app/reducers";
 import {
@@ -13,6 +14,7 @@ import {
 	setInterfaceColor,
 	setCtrlEnter,
 	setClockDisplay,
+	setLanguage,
 	resetToDefaults
 } from "app/actions";
 import { connect } from "react-redux";
@@ -20,10 +22,12 @@ import { Page } from "../Page";
 
 interface SettingsProps {
 	settings: SettingsData;
+	literals: i18n.I18nLiterals;
 	setUserName: (value: UserName) => void;
 	setInterfaceColor: (value: InterfaceColor) => void;
 	setCtrlEnter: (value: CtrlEnter) => void;
 	setClockDisplay: (value: ClockDisplay) => void;
+	setLanguage: (value: Language) => void;
 	resetToDefaults: () => void;
 }
 
@@ -32,11 +36,13 @@ function SettingsComponent(props: SettingsProps) {
 		<Page settings={props.settings}>
 			<SettingsForm
 				data={props.settings}
+				literals={props.literals}
 				setters={{
 					setUserName: props.setUserName,
 					setInterfaceColor: props.setInterfaceColor,
 					setCtrlEnter: props.setCtrlEnter,
 					setClockDisplay: props.setClockDisplay,
+					setLanguage: props.setLanguage,
 					resetToDefaults: props.resetToDefaults
 				}}
 			/>
@@ -46,7 +52,8 @@ function SettingsComponent(props: SettingsProps) {
 
 function mapStateToProps(state: AppState) {
 	return {
-		settings: state.settings
+		settings: state.settings,
+		literals: state.i18n.literals
 	};
 }
 
@@ -55,6 +62,7 @@ const mapDispatchToProps = {
 	setInterfaceColor,
 	setCtrlEnter,
 	setClockDisplay,
+	setLanguage,
 	resetToDefaults
 };
 
