@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as style from "../style.scss";
 import { CtrlEnter } from "app/models";
+import { SettingsFormLabel } from "../SettingsFormLabel";
 
 interface CtrlEnterFieldProps {
 	value: CtrlEnter;
@@ -11,7 +12,7 @@ export function CtrlEnterField(props: CtrlEnterFieldProps) {
 	const ctrlEnter = props.value;
 	return (
 		<>
-			<label>Send messages on CTRL + ENTER</label>
+			<SettingsFormLabel>Send messages on CTRL + ENTER</SettingsFormLabel>
 			<div className={style.radioGroup}>
 				<div className={style.formCheck}>
 					<input

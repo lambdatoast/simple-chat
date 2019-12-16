@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as style from "../style.scss";
 import { ClockDisplay } from "app/models";
+import { SettingsFormLabel } from "../SettingsFormLabel";
 
 interface ClockDisplayFieldProps {
 	value: ClockDisplay;
@@ -11,7 +12,7 @@ export function ClockDisplayField(props: ClockDisplayFieldProps) {
 	const value = props.value;
 	return (
 		<>
-			<label>Clock display</label>
+			<SettingsFormLabel>Clock display</SettingsFormLabel>
 			<div className={style.radioGroup}>
 				<div className={style.formCheck}>
 					<input
