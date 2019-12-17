@@ -17,12 +17,15 @@ export class EmojiCell extends React.PureComponent<EmojiCellProps> {
 				<a
 					className={style.emojiCellBtn}
 					onClick={() => {
-						onSelect(`[emoji:${code}]`);
+						const el = document.createElement("img");
+						el.src = `https://twemoji.maxcdn.com/v/12.1.4/72x72/${code}.png`;
+						el.className = style.emojiCellEmoji;
+						onSelect(el.outerHTML);
 					}}
 				>
 					<img
 						className={style.emojiCellEmoji}
-						src={`https://twemoji.maxcdn.com/v/12.1.4/72x72/${code.toLowerCase()}.png`}
+						src={`https://twemoji.maxcdn.com/v/12.1.4/72x72/${code}.png`}
 					/>
 				</a>
 			</td>
