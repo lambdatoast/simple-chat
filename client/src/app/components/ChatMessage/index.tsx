@@ -8,7 +8,7 @@ import { ChatMessageHeader } from "./ChatMessageHeader";
 // TODO: Create private constructor or something, to enforce this,
 // because it's easy to forget about this.
 const YOUTUBE_URL_REGEXP: RegExp = /^(?:https:\/\/)www\.youtube\.com\/watch\?v=(\w+)/;
-const IMAGE_URL_REGEXP: RegExp = /^(?:https?:\/\/.*\.(?:png|jpg|gif))/;
+const IMAGE_URL_REGEXP: RegExp = /^https?:\/\/[^<>]+\.(?:png|jpg|gif)/;
 const URL_REGEXP: RegExp = /^[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 function youTubeReplacer(result: RegExpMatchArray) {
 	const el = document.createElement("iframe");
@@ -69,7 +69,7 @@ type Processor = [RegExp, Replacer];
 const nonReplacer: Replacer = result => result[0];
 
 const processors: Processor[] = [
-	[/^<img.*?>/, nonReplacer],
+	[/^<img[^>]*>/, nonReplacer],
 	[YOUTUBE_URL_REGEXP, youTubeReplacer],
 	[IMAGE_URL_REGEXP, imageReplacer],
 	[URL_REGEXP, urlReplacer]
