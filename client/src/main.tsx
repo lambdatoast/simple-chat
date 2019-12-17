@@ -9,7 +9,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Chat, Settings } from "app/containers";
 import { appReducer } from "app/reducers";
 import { ChatMessageData, SettingsData } from "app/models";
-import { appendMessage, setUserName } from "app/actions";
+import { appendMessage, setUserName, setInterfaceColor } from "app/actions";
 import { socketMiddleware } from "app/middleware/socket";
 import "./style.scss";
 import { settingsStorage } from "app/middleware/settingsStorage";
@@ -44,6 +44,13 @@ socket.on("guestUserName", (userName: string) => {
 		store.dispatch(setUserName(userName));
 	}
 });
+
+if (
+	window.matchMedia &&
+	window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+	store.dispatch(setInterfaceColor("dark"));
+}
 
 // Log the initial state
 console.log(store.getState());
