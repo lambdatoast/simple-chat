@@ -12,6 +12,8 @@ const YOUTUBE_URL_REGEXP: RegExp = /^(?:https:\/\/)www\.youtube\.com\/watch\?v=(
 const IMAGE_URL_REGEXP: RegExp = /^https?:\/\/[^<>]+\.(?:png|jpg|gif)/;
 const AUDIO_URL_REGEXP: RegExp = /^https?:\/\/[^<>]+\.(?:wav|mp3|ogg)/;
 const URL_REGEXP: RegExp = /^[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+const CODE_REGEXP: RegExp = /^```([^`]*)```/;
+
 function youTubeReplacer(result: RegExpMatchArray) {
 	const el = document.createElement("iframe");
 	el.width = "100%";
@@ -50,6 +52,10 @@ function urlReplacer(result: RegExpMatchArray): string {
 	return el.outerHTML;
 }
 
+function codeReplacer(result: RegExpMatchArray): string {
+	return `<pre>${result[1]}</pre>`;
+}
+
 interface ChatMessageProps {
 	data: ChatMessageData;
 	isSelf: boolean;
@@ -65,7 +71,8 @@ const processors: Processor[] = [
 	[YOUTUBE_URL_REGEXP, youTubeReplacer],
 	[IMAGE_URL_REGEXP, imageReplacer],
 	[AUDIO_URL_REGEXP, audioReplacer],
-	[URL_REGEXP, urlReplacer]
+	[URL_REGEXP, urlReplacer],
+	[CODE_REGEXP, codeReplacer]
 ];
 
 const parse = parseWith(processors);
