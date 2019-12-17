@@ -67,3 +67,4 @@ Since all of the required features were implemented, the following are my notes 
 1. Unit testing: There are plenty of things that could and should be unit tested. I would recommend property-based/generative testing (e.g. with jsverify). Particularly for the media link parsers, etc.
 2. JSDoc missing.
 3. Performance improvements: Putting the redux containers nearer to the React node tree leaves, memoization, using `PureComponent` whenever possible.
+4. UI / UX: Some big last-minute changes (restructuring layout, styles, etc.) broke some alignments, spacing, borders, etc. Did not have time to fix.
