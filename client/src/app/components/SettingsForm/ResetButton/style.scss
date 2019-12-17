@@ -5,7 +5,9 @@
 	background: var(--bg-reset-btn);
 	color: var(--danger);
 	border: 1px solid var(--danger);
-	position: absolute;
-	bottom: 2%;
-	width: 96%;
+	max-width: 100%;
+	margin-top: 1em;
+}
+
+@media (min-width: 700px) and (orientation: landscape) {
 }
