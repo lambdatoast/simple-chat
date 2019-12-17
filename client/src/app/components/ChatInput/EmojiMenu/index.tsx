@@ -39,7 +39,6 @@ export class EmojiMenu extends React.Component<EmojiMenuProps, EmojiMenuState> {
 		const { emoji } = this.state;
 		const classes = classNames({
 			[style.chatEmojiMenu]: true,
-			[style.chatEmojiMenuClosed]: menuState === "closed",
 			[style.chatEmojiMenuOpen]: menuState === "open"
 		});
 		return (

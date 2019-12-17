@@ -7,3 +7,15 @@
 	table-layout: fixed;
 	text-align: center;
 }
+
+.chatEmojiTableContainer {
+	overflow-y: auto;
+	height: 200px;
+	margin-top: 50px;
+}
+
+@include media-breakpoint-up(md) {
+	.chatEmojiTableContainer {
+		margin-top: 80px;
+	}
+}
