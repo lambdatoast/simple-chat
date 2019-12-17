@@ -41,10 +41,6 @@ export class ChatInput extends React.Component<ChatInputProps, ChatInputState> {
 		const { settings } = this.props;
 		return (
 			<>
-				<EmojiMenu
-					menuState={this.state.emojiMenuState}
-					onSelect={this.onEmojiSelect}
-				/>
 				<div className={style.chatInputContainer}>
 					<EmojiMenuButton
 						menuState={this.state.emojiMenuState}
@@ -59,6 +55,10 @@ export class ChatInput extends React.Component<ChatInputProps, ChatInputState> {
 					<SendButton
 						hide={settings.ctrlEnter === "on"}
 						onClick={this.sendMessage}
+					/>
+					<EmojiMenu
+						menuState={this.state.emojiMenuState}
+						onSelect={this.onEmojiSelect}
 					/>
 				</div>
 			</>

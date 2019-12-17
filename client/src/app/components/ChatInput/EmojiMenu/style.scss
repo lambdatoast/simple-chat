@@ -1,19 +1,19 @@
 @import "~bootstrap/scss/bootstrap";
 
 .chatEmojiMenu {
-	@extend .m-3;
-	transition: all 0.7s;
+	transition: all 0.4s ease-in;
 	background: var(--bg);
-}
-
-.chatEmojiMenuClosed {
-	flex: 0;
+	height: 250px;
+	margin: 2% 2% 0 2%;
+	position: absolute;
+	top: -250px;
+	left: 0;
+	display: none;
 	overflow: hidden;
 }
 
 .chatEmojiMenuOpen {
-	flex: 10;
-	overflow-y: scroll;
+	display: block;
 }
 
 .chatEmojiTable {

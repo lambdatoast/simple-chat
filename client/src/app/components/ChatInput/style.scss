@@ -2,9 +2,11 @@
 
 .chatInputContainer {
 	@extend .input-group;
-	flex: 2;
 	padding: 2%;
 	display: flex;
+	background-color: var(--bg-chat-message);
+	flex: 1;
+	position: relative;
 }
 
 .chatInputSendBtn {

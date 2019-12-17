@@ -15,12 +15,13 @@ export class EmojiCategories extends React.Component<EmojiCategoriesProps> {
 			<ul className={style.chatEmojiCategories}>
 				{categories.map(category => {
 					const classes = classNames({
-						[style.chatEmojiCategory]: true,
-						[style.chatEmojiCategoryActive]: active === category
+						[style.chatEmojiCategoryButton]: true,
+						[style.chatEmojiCategoryButtonActive]: active === category
 					});
 					return (
-						<li key={category} className={classes}>
+						<li className={style.chatEmojiCategory} key={category}>
 							<a
+								className={classes}
 								onClick={() => {
 									onSelect(category);
 								}}

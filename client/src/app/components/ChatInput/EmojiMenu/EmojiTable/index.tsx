@@ -49,38 +49,40 @@ export class EmojiTable extends React.Component<
 					onSelect={this.setActiveCategory}
 					active={activeCategory}
 				/>
-				{categories
-					.filter(category => category === activeCategory)
-					.map(category => {
-						const forest = emoji[category].reduce<EmojiReducerAcc>(
-							(acc: EmojiReducerAcc, e: EmojiSpec) => {
-								const cell = (
-									<EmojiCell key={e.codes} data={e} onSelect={onSelect} />
-								);
-								const cells = acc.cells.concat([cell]);
-								const isLastCell = acc.cellCount === emoji[category].length;
-								const isRowFull = cells.length % 10 === 0;
-								const shouldAddRow = isLastCell || isRowFull;
-								const rows = shouldAddRow
-									? acc.rows.concat(
-											<tr key={`${category}-${acc.rows.length}`}>{cells}</tr>
-									  )
-									: acc.rows;
-								return {
-									...acc,
-									rows,
-									cells: shouldAddRow ? [] : cells,
-									cellCount: acc.cellCount + 1
-								};
-							},
-							{ rows: [], cells: [], cellCount: 1 }
-						);
-						return (
-							<table className={style.chatEmojiTable} key={category}>
-								<tbody key={category}>{forest.rows}</tbody>
-							</table>
-						);
-					})}
+				<div className={style.chatEmojiTableContainer}>
+					{categories
+						.filter(category => category === activeCategory)
+						.map(category => {
+							const forest = emoji[category].reduce<EmojiReducerAcc>(
+								(acc: EmojiReducerAcc, e: EmojiSpec) => {
+									const cell = (
+										<EmojiCell key={e.codes} data={e} onSelect={onSelect} />
+									);
+									const cells = acc.cells.concat([cell]);
+									const isLastCell = acc.cellCount === emoji[category].length;
+									const isRowFull = cells.length % 10 === 0;
+									const shouldAddRow = isLastCell || isRowFull;
+									const rows = shouldAddRow
+										? acc.rows.concat(
+												<tr key={`${category}-${acc.rows.length}`}>{cells}</tr>
+										  )
+										: acc.rows;
+									return {
+										...acc,
+										rows,
+										cells: shouldAddRow ? [] : cells,
+										cellCount: acc.cellCount + 1
+									};
+								},
+								{ rows: [], cells: [], cellCount: 1 }
+							);
+							return (
+								<table className={style.chatEmojiTable} key={category}>
+									<tbody key={category}>{forest.rows}</tbody>
+								</table>
+							);
+						})}
+				</div>
 			</>
 		);
 	}

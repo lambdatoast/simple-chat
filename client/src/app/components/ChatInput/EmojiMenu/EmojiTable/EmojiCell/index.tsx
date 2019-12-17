@@ -13,7 +13,7 @@ export class EmojiCell extends React.PureComponent<EmojiCellProps> {
 		// only first part needed for CDN png path, it seems.
 		const code = data.codes.split(" ")[0].toLowerCase();
 		return (
-			<td>
+			<td className={style.emojiCell}>
 				<a
 					className={style.emojiCellBtn}
 					onClick={() => {
