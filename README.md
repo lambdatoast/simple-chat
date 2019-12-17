@@ -30,8 +30,8 @@ Since all of the required features were implemented, the following are my notes 
 
 # Chat
 
-"Optional" = Suggested by the spec, but not required.
-"Additional" = Own ideas beyond the spec.
+* "Optional" = Suggested by the spec, but not required.
+* "Additional" = Own ideas beyond the spec.
 
 | Feature  | Type | Development Notes |
 | ------------- | ------------- | ---------- |
@@ -43,8 +43,8 @@ Since all of the required features were implemented, the following are my notes 
 
 # Settings
 
-"Optional" = Suggested by the spec, but not required.
-"Additional" = Own ideas beyond the spec.
+* "Optional" = Suggested by the spec, but not required.
+* "Additional" = Own ideas beyond the spec.
 
 | Feature  | Type | Development notes |
 | ------------- | ------------- | ---------- |
