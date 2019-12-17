@@ -1,10 +1,10 @@
-# Simple Chat Application (TypeScript + React + Redux + Node.js + Socket IO)
+# Simple Chat App (TypeScript + React + Redux + SASS + Node.js + Socket IO)
 
-This is a simple app to demostrate a Chat through websockets, with basic versions of features such as light/dark theme switching, emojis, and media links parsing.
+Simple app to demostrate a Chat through websockets, with basic Settings section to allow configuration of things like e.g. light/dark theme switching, emojis, and media links parsing.
 
 # Requirements
 
-1. `nvm`.
+1. [nvm](https://github.com/nvm-sh/nvm) for installing the right version of node, as found in the `.nvmrc` files for client and server.
 
 # Running the app
 
@@ -26,9 +26,7 @@ Afterwards, you can just run `npm run dev` for the client and for the server.
 
 # Features
 
-Some of the features were required, others optional, and others were additional ideas on my end.
-
-Since all of the required features were implemented, the following is a list of the more interesting optional (suggested by the spec) and additional (suggested by myself) features.
+Since all of the required features were implemented, the following are my notes on the more interesting optional (as suggested by the spec) features, as well as the additional (i.e. suggested by myself) features.
 
 # Chat
 
@@ -45,14 +43,25 @@ Since all of the required features were implemented, the following is a list of 
 
 # Settings
 
+"Optional" = Suggested by the spec, but not required.
+"Additional" = Own ideas beyond the spec.
 
-| Feature  | Type | Development Notes |
+| Feature  | Type | Development notes |
 | ------------- | ------------- | ---------- |
 | Username | Additional | I made the server send "guest-{N}" as user name suggestion to new users |
 | Interface color | Additional | Besides implementing light/dark theme switching, the app will make the dark theme a default if it finds that such is the user's OS preference |
 | Internationalization | Optional | Implemented using the redux store to keep the language literals. Using the React Context API was considered, but for this small app it didn't seem to be worth it. |
 
-# Known Issues / General development notes / TODOs
+# Known Issues / General development notes
 
-1. Routing with React Router's `<Switch>` is convenient, BUT it unmounts `<Chat />` when switching to `/settings`. This causes important state to be lost when returning to the Chat. Some of the issues caused by this could be solved with `componentWillUnmount` to persist this state somewhere (e.g. chat input text, UI state of the emoji panel, chat messages vertical scroll, etc.). BUT other issues caused by this are too hairy to solve (e.g. the YouTube embed iframes completely reset, same goes for the audio, etc.). One solution would be to ditch react router, and just implement a pseudo  routing using CSS to hide/show each page.
-2. Emoji performance: There are **way too many emoji** in the seemingly official DB I found. I filtered the data tree a it, but still. Many `<img>` around. Some kind of smart pre-loading could be thought for this.
+| Type  | Description | Suggestion |
+| ------------- | ------------- | ---------- |
+| Bug | Routing with React Router's `<Switch>` is convenient, BUT it unmounts `<Chat />` when switching to `/settings`. This causes important state to be lost when returning to the Chat. Some of the issues caused by this could be solved with `componentWillUnmount` to persist this state somewhere (e.g. chat input text, UI state of the emoji panel, chat messages vertical scroll, etc.). BUT other issues caused by this are too hairy to solve (e.g. the YouTube embed iframes completely reset, same goes for the audio, etc.). | One solution would be to ditch react router, and just implement a pseudo  routing using CSS to hide/show each page |
+| Perf | There are **way too many emoji** in the seemingly official DB I found. I filtered the data tree a it, but it's still very large. Many `<img>` being rendered | Some kind of clever pre-loading could be thought for this.|
+| Issue | User doesn't know how many users are online | It should not be hard to at basic "Chat room" and "User list" functionality. |
+
+# Missing
+
+1. Unit testing: There are plenty of things that could and should be unit tested. I would recommend property-based/generative testing (e.g. with jsverify). Particularly for the media link parsers, etc.
+2. JSDoc missing.
+3. Performance improvements: Putting the redux containers nearer to the React node tree leaves, memoization, using `PureComponent` whenever possible.
