@@ -13,15 +13,19 @@ Simple app to demostrate a Chat through websockets, with basic Settings section 
 Assuming `nvm` is already installed, and you are at the root of the git repo, then:
 
 > cd client
-> nvm use && npm i && npm run dev
+>
+> nvm use && npm i && export PORT=5001; npm run dev
+>
 > cd ../server
+>
 > nvm use && npm i && npm run dev
 
 Afterwards, you can just run `npm run dev` for the client and for the server.
 
 ## Production mode
 
-> cd client && nvm use && npm run build
+> cd client && nvm use && export PORT=5001; npm run dev
+> 
 > cd ../server && npm run build
 
 # Features
