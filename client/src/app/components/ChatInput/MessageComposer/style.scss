@@ -6,6 +6,8 @@
 	border-radius: 0;
 	background-color: var(--bg-chat-message);
 	color: var(--text-color-chat-message);
+	height: 100%;
+	overflow: scroll;
 }
 
 .chatInputText:focus {
