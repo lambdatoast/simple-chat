@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as socketIo from "socket.io";
 import { createServer, Server } from "http";
+import * as path from "path";
 import { ChatServerState } from "./models/ChatServerState";
 import { onMessage } from "./eventHandlers";
 import { cleanEmoji } from "./cleanEmoji";
@@ -13,10 +14,10 @@ function createExpressApp(): express.Application {
 	app.use(cors());
 	app.options("*", cors());
 	app.get("/api/emoji", (req, res, next) => {
-		console.log("eeeermmm");
 		res.json(emoji);
 		next();
 	});
+	app.use(express.static(path.join("..", "client", "build")));
 	return app;
 }
 
