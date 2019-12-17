@@ -6,6 +6,11 @@
 	position: relative;
 	background: var(--bg-chat-message);
 	color: var(--text-color-chat-message);
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: break-word;
+	hyphens: auto;
+	max-width: 95%;
 }
 
 .chatMessageSelf {
