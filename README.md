@@ -33,12 +33,14 @@ Since all of the required features were implemented, the following are my notes 
 * "Optional" = Suggested by the spec, but not required.
 * "Additional" = Own ideas beyond the spec.
 
-| Feature  | Type | Development Notes |
+| Feature  | Type | Post-development comments |
 | ------------- | ------------- | ---------- |
 | Smiles support  | Optional  | Implemented as collapsable panel with browsable smileys by category ("People", "Objects", etc.)
 | Smiles support  | Additional  | Chat message input was first a `textarea` but later re-implemented as a "rich editor" to allow the chosen smiley to appear fully rendered in it |
-| Link parser | Optional | Implemented YouTube, Image, and plain old link parsing, as suggested. |
-| Link parser | Additional | Added Audio link parsing. If a URL looks like an audio file, I render a file player |
+| Link parser - YouTube | Optional | An `<iframe>` is added with the embedded YT video.. |
+| Link parser - Images | Optional | Add the `<img>` if the URL is recognized as an image. It needed `max-width` and `max-height` in the CSS to keep large images from breaking everything. |
+| Link parser - Plain links | Optional | Normal links shown as `<a>`. Word break, wrap, hyphen, etc. salad of CSS rules used to keep large links from breaking the layout. |
+| Link parser - Audio | Additional | If a URL looks like an audio file, I render a file player |
 | Chat input | Additional | Remove the "Send" button if user wants to use CTRL + ENTER, to give the user more space to write |
 
 # Settings
@@ -46,7 +48,7 @@ Since all of the required features were implemented, the following are my notes 
 * "Optional" = Suggested by the spec, but not required.
 * "Additional" = Own ideas beyond the spec.
 
-| Feature  | Type | Development notes |
+| Feature  | Type | Post-development comments |
 | ------------- | ------------- | ---------- |
 | Username | Additional | I made the server send "guest-{N}" as user name suggestion to new users |
 | Interface color | Additional | Besides implementing light/dark theme switching, the app will make the dark theme a default if it finds that such is the user's OS preference |
