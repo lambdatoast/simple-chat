@@ -18,7 +18,7 @@ class ChatComponent extends React.Component<ChatProps> {
 	render() {
 		const { messages, settings, sendMessage } = this.props;
 		return (
-			<Page settings={settings}>
+			<Page settings={settings} activePage="Chat">
 				<div className={style.chatContainer}>
 					<ChatMessageList settings={settings} messages={messages} />
 					<ChatInput settings={settings} sendMessage={sendMessage} />

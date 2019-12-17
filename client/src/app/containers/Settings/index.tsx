@@ -33,7 +33,7 @@ interface SettingsProps {
 
 function SettingsComponent(props: SettingsProps) {
 	return (
-		<Page settings={props.settings}>
+		<Page settings={props.settings} activePage="Settings">
 			<SettingsForm
 				data={props.settings}
 				literals={props.literals}

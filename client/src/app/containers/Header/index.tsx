@@ -11,32 +11,33 @@ import * as classNames from "classnames";
 
 interface HeaderComponentProps {
 	navigation: NavigationState;
+	activePage: NavigationPage;
 	literals: i18n.I18nLiterals;
 	setActivePage: (p: NavigationPage) => void;
 }
 
 const classes = (
 	root: string,
-	p: NavigationPage,
-	n: NavigationState,
+	linkPage: NavigationPage,
+	activePage: NavigationPage,
 	shouldBlink: boolean = false
 ) =>
 	classNames({
 		[style[`${root}`]]: true,
-		[style[`${root}Active`]]: n.activePage === p,
-		[style[`${root}Default`]]: n.activePage !== p,
+		[style[`${root}Active`]]: linkPage === activePage,
+		[style[`${root}Default`]]: linkPage !== activePage,
 		[style[`${root}Blinking`]]: shouldBlink
 	});
 
 function HeaderComponent(props: HeaderComponentProps) {
-	const { setActivePage, navigation, literals } = props;
+	const { setActivePage, navigation, literals, activePage } = props;
 	const hasUnreadMessages = navigation.unreadCount > 0;
 	return (
 		<nav className={style.nav}>
 			<ul className={style.navList}>
 				<li className={style.navItem}>
 					<Link
-						className={classes("navLink", "Chat", navigation)}
+						className={classes("navLink", "Chat", activePage)}
 						to="/"
 						onClick={() => {
 							setActivePage("Chat");
@@ -46,7 +47,7 @@ function HeaderComponent(props: HeaderComponentProps) {
 							className={classes(
 								"navLinkIcon",
 								"Chat",
-								navigation,
+								activePage,
 								hasUnreadMessages
 							)}
 							height="2em"
@@ -61,14 +62,14 @@ function HeaderComponent(props: HeaderComponentProps) {
 				</li>
 				<li className={style.navItem}>
 					<Link
-						className={classes("navLink", "Settings", navigation)}
+						className={classes("navLink", "Settings", activePage)}
 						to="/settings"
 						onClick={() => {
 							setActivePage("Settings");
 						}}
 					>
 						<SettingsIcon
-							className={classes("navLinkIcon", "Settings", navigation)}
+							className={classes("navLinkIcon", "Settings", activePage)}
 							height="2em"
 						/>
 						<span>{literals.title.settings}</span>
