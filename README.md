@@ -29,7 +29,7 @@ Afterwards, you can just run `npm run dev` for the client and for the server.
 
 ## Production mode
 
-> cd client && nvm use && npm run dev
+> cd client && nvm use && npm run build
 
 
 Then in another terminal:
