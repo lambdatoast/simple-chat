@@ -14,19 +14,29 @@ Assuming `nvm` is already installed, and you are at the root of the git repo, th
 
 > cd client
 >
-> nvm use && npm i && export PORT=5001; npm run dev
+> nvm use && npm run dev
 >
-> cd ../server
+
+Then in another terminal:
+
+> cd server
 >
-> nvm use && npm i && npm run dev
+> nvm use && npm i
+> 
+> export PORT=5001 && npm run dev
 
 Afterwards, you can just run `npm run dev` for the client and for the server.
 
 ## Production mode
 
-> cd client && nvm use && export PORT=5001; npm run dev
-> 
-> cd ../server && npm run build
+> cd client && nvm use && npm run dev
+
+
+Then in another terminal:
+
+> cd server
+>
+> export PORT=5001 && npm run build
 
 # Features
 
