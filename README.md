@@ -34,7 +34,7 @@ Afterwards, you can just run `npm run dev` for the client and for the server.
 
 Then in another terminal:
 
-> cd server
+> cd server && nvm use
 >
 > export PORT=5001 && npm run build
 
